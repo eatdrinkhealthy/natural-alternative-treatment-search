@@ -2,9 +2,9 @@
 
 <h2>MongoLab - Database</h2>
 <h3>Database User</h3>
-<strong>server: </strong>ds053178.mongolab.com
-<strong>port: </strong>53178
-<strong>database name: </strong>steve-marsh
+<strong>server: </strong>ds053178.mongolab.com<br>
+<strong>port: </strong>53178<br>
+<strong>database name: </strong>steve-marsh<br>
 <hr>
-<strong>username: </strong> steve-marsh
-<strong>password: </strong>36hjd;pq24y-kgasw-035uad
+<strong>username: </strong> steve-marsh<br>
+<strong>password: </strong>36hjd;pq24y-kgasw-035uad<br>
