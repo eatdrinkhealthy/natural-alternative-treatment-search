@@ -4,6 +4,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var modRewrite = require('connect-modrewrite');
 
 // Route dependencies
 var diets = require('./cancer-diets/cancer-diets-routes.js');
@@ -19,16 +20,31 @@ server.set('port', process.env.PORT || 80);
 server.set('view engine', 'jade');
 server.use(express.favicon());
 server.use(express.logger('dev'));
-server.use(express.json());
-server.use(express.urlencoded());
+server.use(express.bodyParser());
 server.use(express.methodOverride());
-server.use(server.router);
+server.use(express.cookieParser());
 server.use(express.static(path.join(__dirname, '../public')));
 
 // development only
 if ('development' == server.get('env')) {
     server.use(express.errorHandler());
 }
+
+/* These are rewrite rules so that when a user does browser page reload they URL is passed back to Angular */
+server.use(modRewrite([
+
+]));
+
+/* This is the IE cache issue solution */
+server.use(function (req, res, next) {
+    //TODO: move this to a separate file
+    res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.header('Pragma', 'no-cache');
+    res.header('Expires', 0);
+    next();
+});
+
+server.use(server.router);
 
 // Static Routes
 server.get('/', function (req, res) {
@@ -114,13 +130,6 @@ server.get('/api/resources/:id', resources.getOneById);
 
 server.get('/api/treatments', treatments.getAll);
 server.get('/api/treatments/:id', treatments.getOneById);
-
-
-
-
-
-
-
 
 http.createServer(server).listen(server.get('port'), function () {
     console.log('Express server listening on port ' + server.get('port'));
