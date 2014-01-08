@@ -1,7 +1,7 @@
-exports.getAll = function(req, res){
+exports.getAll = function (req, res) {
     res.send({}, 200);
 };
 
-exports.getOneById = function(req, res){
+exports.getOneById = function (req, res) {
     res.send({}, 200);
 };
