@@ -1,10 +1,16 @@
-/**
- * Module dependencies.
- */
+
+// Module dependencies
 
 var express = require('express');
 var http = require('http');
 var path = require('path');
+
+// Route dependencies
+var diets = require('./cancer-diets/cancer-diets-routes.js');
+var clinics = require('./clinics/clinics-routes.js');
+var practitioners = require('./practitioners/practitioners-routes.js');
+var resources = require('./resources/resources-routes.js');
+var treatments = require('./treatments/treatments-routes.js');
 
 var server = express();
 
@@ -24,7 +30,7 @@ if ('development' == server.get('env')) {
     server.use(express.errorHandler());
 }
 
-
+// Static Routes
 server.get('/', function (req, res) {
     res.sendfile(path.join(__dirname, '../public/static/index.html'));
 });
@@ -92,6 +98,28 @@ server.get('/treatments', function (req, res) {
 server.get('/treatment', function (req, res) {
     res.sendfile(path.join(__dirname, '../public/static/treatment.html'));
 });
+
+// API Routes
+server.get('/api/cancer-diets', diets.getAll);
+server.get('/api/cancer-diets/:id', diets.getOneById);
+
+server.get('/api/clinics', clinics.getAll);
+server.get('/api/clinics/:id', clinics.getOneById);
+
+server.get('/api/practitioners', practitioners.getAll);
+server.get('/api/practitioners/:id', practitioners.getOneById);
+
+server.get('/api/resources', resources.getAll);
+server.get('/api/resources/:id', resources.getOneById);
+
+server.get('/api/treatments', treatments.getAll);
+server.get('/api/treatments/:id', treatments.getOneById);
+
+
+
+
+
+
 
 
 http.createServer(server).listen(server.get('port'), function () {
