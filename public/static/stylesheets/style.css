@@ -43,3 +43,35 @@ body {
 code {
     font-size: 80%;
 }
+
+
+/* Custom CSS for Jumbotron background image */
+/*
+.jumbotron {
+    position: relative;
+    background: none;
+    padding: 5px;
+    margin-bottom: 5px;
+
+    color: rgb(50, 50, 50);
+
+    font-size: 10px;
+    font-weight: 200;
+    line-height: 2.1428571435;
+}
+
+.jumbotron:after {
+    content:"";
+
+    background: url("/static/images/");
+
+    background-repeat: no-repeat;
+    opacity: 1.0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+*/
