@@ -10,11 +10,13 @@ var mongo = require('mongodb')
 // Load models
 var Treatments = require('../../treatments/treatments-model.js');
 var Resources = require('../../resources/resources-model.js');
+var Practitioners = require('../../practitioners/practitioners-model.js');
 
 function Models() {
     var self = this;
     this.Treatments = Treatments;
     this.Resources = Resources;
+    this.Practitioners = Practitioners;
 
     var options = {
         user: 'web-app',
