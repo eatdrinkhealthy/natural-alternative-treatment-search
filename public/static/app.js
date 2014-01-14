@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practitionersModule', 'clinicsModule']).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practitionersModule', 'clinicsModule', 'cancerDietsModule']).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
     // HTML5 mode
     $locationProvider.html5Mode(true);
@@ -130,7 +130,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
 
     $routeProvider.when('/cancer-diets', {
         templateUrl: '/static/cancer-diets.html',
-        controller: 'mockController',
+        controller: 'cancerDietsController',
         resolve: {
 
         }

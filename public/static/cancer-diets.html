@@ -31,71 +31,40 @@
     Filter By:
     <div class="form-group">
         <label class="sr-only" for="cancerType">Cancer Type</label>
-        <input type="text" class="form-control" id="cancerType" placeholder="Cancer Type">
+        <input type="text" class="form-control" id="cancerType" placeholder="Cancer Type" ng-model="cancerDiet.cancer_type">
     </div>
     <div class="form-group">
         <label class="sr-only" for="stage">Stage</label>
-        <input type="text" class="form-control" id="stage" placeholder="Stage">
+        <input type="text" class="form-control" id="stage" placeholder="Stage" ng-model="cancerDiet.stage">
     </div>
 </form>
 
 <br/>
 
 <div class="list-group">
-    <div class="list-group-item ">
+    <div class="list-group-item" ng-repeat="cancerDiet in cancerDiets | filter:cancerDiet">
         <div class="row">
-            <h4 class="col-sm-12"><a href="/cancer-diets/mock">Diet Wise</a></h4>
+            <h4 class="col-sm-12"><a href="/cancer-diets/{{cancerDiet._id}}">{{cancerDiet.name}}</a></h4>
         </div>
         <div class="row">
-            <h5 class="col-sm-12">By Dr. Keith Scott-Mumby</h5>
+            <h5 class="col-sm-12"><span ng-repeat="author in cancerDiet.author">{{author}}<span ng-hide="cancerDiet.author.length == $index+1">,</span> </span></h5>
+
         </div>
         <div class="row">
-            <p class="col-sm-10">Cancer Type: <span class="badge">All</span>
+            <p class="col-sm-5">Cancer Type: <span ng-repeat="cancer_type in cancerDiet.cancer_type"><span class="badge">{{cancer_type}}</span> </span>
             </p>
 
-            <p class="col-sm-2">Stage: <span class="badge">All</span></p>
+            <p class="col-sm-2">Stage: <span ng-repeat="stage in cancerDiet.stage"><span class="badge">{{stage}}</span> </span>
 
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <h5>Overview</h5>
 
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-                    tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-                    magna
-                    mollis euismod. Donec sed odio dui. </p>
+                <p>{{cancerDiet.overview}}</p>
             </div>
         </div>
     </div>
-
-    <div class="list-group-item ">
-        <div class="row">
-            <h4 class="col-sm-12"><a href="">The Whole-Food Guide for Breast Cancer Survivors</a></h4>
-        </div>
-        <div class="row">
-            <h5 class="col-sm-12">By Edward Bauman MEd PhD, Helayne Waldman MS EdD</h5>
-        </div>
-        <div class="row">
-            <p class="col-sm-10">Cancer Type: <span class="badge">Breast</span>
-            </p>
-
-            <p class="col-sm-2">Stage: <span class="badge">All</span></p>
-
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <h5>Overview</h5>
-
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-                    tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-                    magna
-                    mollis euismod. Donec sed odio dui. </p>
-            </div>
-        </div>
-    </div>
-
 
 </div>
 <!-- End page content -->
