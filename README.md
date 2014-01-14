@@ -6,5 +6,5 @@
 <strong>port: </strong>53178<br>
 <strong>database name: </strong>steve-marsh<br>
 <hr>
-<strong>username: </strong> steve-marsh<br>
+<strong>username: </strong>web-app<br>
 <strong>password: </strong>36hjd;pq24y-kgasw-035uad<br>
