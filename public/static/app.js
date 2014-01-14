@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', []).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+var app = angular.module('app', ['treatmentsModule']).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
     // HTML5 mode
     $locationProvider.html5Mode(true);
@@ -65,7 +65,7 @@ var app = angular.module('app', []).config(['$routeProvider', '$locationProvider
 
     $routeProvider.when('/treatments', {
         templateUrl: '/static/treatments.html',
-        controller: 'mockController',
+        controller: 'treatmentsController',
         resolve: {
 
         }

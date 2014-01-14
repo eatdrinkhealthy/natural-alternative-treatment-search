@@ -31,74 +31,43 @@
     Filter By:
     <div class="form-group">
         <label class="sr-only" for="cancerType">Cancer Type</label>
-        <input type="text" class="form-control" id="cancerType" placeholder="Cancer Type">
+        <input type="text" class="form-control" id="cancerType" placeholder="Cancer Type" ng-model="treatment.cancer_type">
     </div>
     <div class="form-group">
         <label class="sr-only" for="stage">Stage</label>
-        <input type="text" class="form-control" id="stage" placeholder="Stage">
+        <input type="text" class="form-control" id="stage" placeholder="Stage" ng-model="treatment.stage">
     </div>
     <div class="form-group">
         <label class="sr-only" for="treatmentCategory">Treatment Category</label>
-        <input type="text" class="form-control" id="treatmentCategory" placeholder="Treatment Category">
+        <input type="text" class="form-control" id="treatmentCategory" placeholder="Treatment Category" ng-model="treatment.treatment_category">
     </div>
 </form>
 
 <br/>
 
 <div class="list-group">
-    <div class="list-group-item ">
+    <div class="list-group-item" ng-repeat="treatment in treatments | filter:treatment">
         <div class="row">
-            <h4 class="col-sm-12"><a href="/treatments/mock">Budwig Protocol</a></h4>
+            <h4 class="col-sm-12"><a href="/treatments/{{treatment._id}}">{{treatment.name}}</a></h4>
         </div>
         <div class="row">
-            <p class="col-sm-5">Cancer Type: <span class="badge">All</span>
+            <p class="col-sm-5">Cancer Type: <span ng-repeat="cancer_type in treatment.cancer_type"><span class="badge">{{cancer_type}}</span> </span>
             </p>
 
-            <p class="col-sm-2">Stage: <span class="badge">All</span>
+            <p class="col-sm-2">Stage: <span ng-repeat="stage in treatment.stage"><span class="badge">{{stage}}</span> </span>
 
-            <p class="col-sm-5">Treatment Category: <span class="badge">Diet</span></p>
+            <p class="col-sm-5">Treatment Category: <span ng-repeat="treatment_category in treatment.treatment_category"> <span class="badge">{{treatment_category}}</span> </span></p>
 
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <h5>Overview</h5>
 
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-                    tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-                    magna
-                    mollis euismod. Donec sed odio dui. </p><a href="/treatments/mock" class="pull-right">Learn More</a>
+                <p>{{treatment.overview}}</p><a href="/treatments/{{treatment._id}}" class="pull-right">Learn More</a>
             </div>
         </div>
     </div>
-    <div class="list-group-item ">
-        <div class="row">
-            <h4 class="col-sm-12"><a href="">Cayenne Pepper/Capsaicin</a></h4>
-        </div>
-        <div class="row">
-            <p class="col-sm-5">Cancer Type: <span class="badge">Prostate</span> <span
-                    class="badge">Lung</span> <span class="badge">Leukemia</span> <span class="badge">Pancreatic</span>
-                <span class="badge">Skin</span>
-            </p>
 
-            <p class="col-sm-2">Stage: <span class="badge">3</span> <span
-                    class="badge">4</span></p>
-
-            <p class="col-sm-5">Treatment Category: <span class="badge">Herbal</span></p>
-
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <h5>Overview</h5>
-
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-                    tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-                    magna
-                    mollis euismod. Donec sed odio dui. </p><a href="" class="pull-right">Learn More</a>
-            </div>
-        </div>
-    </div>
 
 </div>
 <!-- End page content -->
