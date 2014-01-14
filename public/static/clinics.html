@@ -31,19 +31,17 @@
     Filter By:
     <div class="form-group">
         <label class="sr-only" for="cancerType">Cancer Type</label>
-        <input type="text" class="form-control" id="cancerType" placeholder="Cancer Type">
+        <input type="text" class="form-control" id="cancerType" placeholder="Cancer Type"
+               ng-model="clinic.cancer_type">
     </div>
     <div class="form-group">
         <label class="sr-only" for="stage">Stage</label>
-        <input type="text" class="form-control" id="stage" placeholder="Stage">
+        <input type="text" class="form-control" id="stage" placeholder="Stage" ng-model="clinic.stage">
     </div>
     <div class="form-group">
         <label class="sr-only" for="treatmentType">Treatment Type</label>
-        <input type="text" class="form-control" id="treatmentType" placeholder="Treatment Type">
-    </div>
-    <div class="form-group">
-        <label class="sr-only" for="treatmentCategory">Treatment Category</label>
-        <input type="text" class="form-control" id="treatmentCategory" placeholder="Treatment Category">
+        <input type="text" class="form-control" id="treatmentType" placeholder="Treatment Type"
+               ng-model="clinic.treatment_type">
     </div>
     <div class="pull-right">
         <div class="form-group">
@@ -56,44 +54,27 @@
 <br/>
 
 <div class="list-group">
-    <div class="list-group-item ">
-    <div class="row">
-        <h4 class="col-sm-6"><a href="/clinics/mock">The Burzynski Clinic</a></h4>
-    </div>
-    <div class="row">
-        <p class="col-sm-4">
-            9432 Katy Freeway<br/>
-            Houston, TX 77055
-        </p>
-    </div>
-    <div class="row">
-        <p class="col-sm-5">Cancer Type: <span class="badge">All</span>
-        </p>
-
-        <p class="col-sm-2">Stage: <span class="badge">All</span></p>
-
-        <p class="col-sm-5">Treatment Type: <span class="badge">Targeted Therapy</span> <span
-                class="badge">Integrative Medicine</span></p>
-    </div>
-</div>
-    <div class="list-group-item ">
+    <div class="list-group-item" ng-repeat="clinic in clinics | filter:clinic">
         <div class="row">
-            <h4 class="col-sm-6"><a href="">Century Wellness Clinic</a></h4>
+            <h4 class="col-sm-6"><a href="/clinics/{{clinic._id}}">{{clinic.name}}</a></h4>
         </div>
         <div class="row">
             <p class="col-sm-4">
-                521 Hammill Lane<br/>
-                Reno, NV 89511
+                {{clinic.address.street}}<br/>
+                {{clinic.address.city}}, {{clinic.address.state}} {{clinic.address.zip}}
             </p>
         </div>
         <div class="row">
-            <p class="col-sm-5">Cancer Type: <span class="badge">All</span> <span class="badge">Breast</span> <span class="badge">Prostate</span> <span class="badge">Lung</span>
+            <p class="col-sm-5">Cancer Type: <span ng-repeat="cancer_type in clinic.cancer_type"><span
+                    class="badge">{{cancer_type}}</span> </span>
             </p>
 
-            <p class="col-sm-2">Stage: <span class="badge">All</span> <span class="badge">4</span></p>
+            <p class="col-sm-2">Stage: <span ng-repeat="stage in clinic.stage"><span
+                    class="badge">{{stage}}</span> </span>
 
-            <p class="col-sm-5">Treatment Type: <span class="badge">Forsythe Immune Protocol</span> <span class="badge">Targeted Therapy</span> <span
-                    class="badge">Integrative Medicine</span></p>
+            <p class="col-sm-5">Treatment Type: <span ng-repeat="treatment_type in clinic.treatment_type"> <span
+                    class="badge">{{treatment_type}}</span> </span></p>
+
         </div>
     </div>
 </div>
