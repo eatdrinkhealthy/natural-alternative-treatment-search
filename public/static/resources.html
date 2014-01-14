@@ -26,72 +26,30 @@
 
 <!-- Begin page content -->
 <h1>Resources</h1>
-<hr/>
-<ul class="pagination">
-    <li><a ng-href="#A">A</a></li>
-    <li><a ng-href="#B">B</a></li>
-    <li><a ng-href="#C">C</a></li>
-    <li><a ng-href="#D">D</a></li>
-    <li><a ng-href="#E">E</a></li>
-</ul>
-<h2>A</h2>
-<a name="A"></a>
+<div>
+    <hr/>
+    <ul class="pagination">
+        <li><a ng-href="#A">A</a></li>
+        <li><a ng-href="#B">B</a></li>
+    </ul>
+    <h2>A</h2>
+    <a name="A"></a>
 
-<div class="list-group">
-    <a href="/resources/mock" class="list-group-item ">
-        Cras justo odio
-    </a>
-    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-    <a href="#" class="list-group-item">Morbi leo risus</a>
-    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-    <a href="#" class="list-group-item">Vestibulum at eros</a>
-</div>
-<h2>B</h2>
-<a name="B"></a>
+    <div class="list-group">
+        <a href="/resources/{{resource._id}}" class="list-group-item" ng-repeat="resource in resources">{{resource.name}}</a>
+    </div>
+    <h2>B</h2>
+    <a name="B"></a>
 
-<div class="list-group">
-    <a href="#" class="list-group-item ">
-        Cras justo odio
-    </a>
-    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-    <a href="#" class="list-group-item">Morbi leo risus</a>
-    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-    <a href="#" class="list-group-item">Vestibulum at eros</a>
-</div>
-<h2>C</h2>
-<a name="C"></a>
+    <div class="list-group">
+        <a href="#" class="list-group-item ">
+            Cras justo odio
+        </a>
+        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+        <a href="#" class="list-group-item">Morbi leo risus</a>
+        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item">Vestibulum at eros</a>
+    </div>
 
-<div class="list-group">
-    <a href="#" class="list-group-item ">
-        Cras justo odio
-    </a>
-    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-    <a href="#" class="list-group-item">Morbi leo risus</a>
-    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-    <a href="#" class="list-group-item">Vestibulum at eros</a>
-</div>
-<h2>D</h2>
-<a name="D"></a>
-
-<div class="list-group">
-    <a href="#" class="list-group-item ">
-        Cras justo odio
-    </a>
-    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-    <a href="#" class="list-group-item">Morbi leo risus</a>
-    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-    <a href="#" class="list-group-item">Vestibulum at eros</a>
-</div>
-<h2>E</h2>
-<a name="E"></a>
-
-<div class="list-group">
-    <a href="#" class="list-group-item ">
-        Cras justo odio
-    </a>
-    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-    <a href="#" class="list-group-item">Morbi leo risus</a>
-    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-    <a href="#" class="list-group-item">Vestibulum at eros</a>
 </div>
 <!-- End page content -->
