@@ -8,7 +8,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
 
     /** Routes **/
     $routeProvider.when('/', {
-        templateUrl: '/static/main.html',
+        templateUrl: '/app/common/main.html',
         controller: 'mockController',
         resolve: {
 
@@ -16,7 +16,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/about', {
-        templateUrl: '/static/about.html',
+        templateUrl: '/app/common/about.html',
         controller: 'mockController',
         resolve: {
 
@@ -24,7 +24,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/contact-us', {
-        templateUrl: '/static/contact-us.html',
+        templateUrl: '/app/common/contact-us.html',
         controller: 'mockController',
         resolve: {
 
@@ -32,7 +32,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/disclaimer', {
-        templateUrl: '/static/disclaimer.html',
+        templateUrl: '/app/common/disclaimer.html',
         controller: 'mockController',
         resolve: {
 
@@ -40,7 +40,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/privacy-policy', {
-        templateUrl: '/static/privacy-policy.html',
+        templateUrl: '/app/common/privacy-policy.html',
         controller: 'mockController',
         resolve: {
 
@@ -48,7 +48,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/site-map', {
-        templateUrl: '/static/site-map.html',
+        templateUrl: '/app/common/site-map.html',
         controller: 'mockController',
         resolve: {
 
@@ -56,7 +56,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/terms-of-use', {
-        templateUrl: '/static/terms-of-use.html',
+        templateUrl: '/app/common/terms-of-use.html',
         controller: 'mockController',
         resolve: {
 
@@ -64,7 +64,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/treatments', {
-        templateUrl: '/static/treatments.html',
+        templateUrl: '/app/treatments/partials/treatments.html',
         controller: 'treatmentsController',
         resolve: {
 
@@ -72,7 +72,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/treatments/:id', {
-        templateUrl: '/static/treatment.html',
+        templateUrl: '/app/treatments/partials/treatment.html',
         controller: 'mockController',
         resolve: {
 
@@ -80,7 +80,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/clinics', {
-        templateUrl: '/static/clinics.html',
+        templateUrl: '/app/clinics/partials/clinics.html',
         controller: 'clinicsController',
         resolve: {
 
@@ -88,7 +88,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/clinics/:id', {
-        templateUrl: '/static/clinic.html',
+        templateUrl: '/app/clinics/partials/clinic.html',
         controller: 'mockController',
         resolve: {
 
@@ -96,7 +96,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/practitioners', {
-        templateUrl: '/static/practitioners.html',
+        templateUrl: '/app/practitioners/partials/practitioners.html',
         controller: 'practitionersController',
         resolve: {
 
@@ -105,7 +105,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
 
 
     $routeProvider.when('/practitioners/:id', {
-        templateUrl: '/static/practitioner.html',
+        templateUrl: '/app/practitioners/partials/practitioner.html',
         controller: 'mockController',
         resolve: {
 
@@ -113,7 +113,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/resources', {
-        templateUrl: '/static/resources.html',
+        templateUrl: '/app/resources/partials/resources.html',
         controller: 'resourcesController',
         resolve: {
 
@@ -121,7 +121,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/resources/:id', {
-        templateUrl: '/static/resource.html',
+        templateUrl: '/app/resources/partials/resource.html',
         controller: 'mockController',
         resolve: {
 
@@ -129,7 +129,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/cancer-diets', {
-        templateUrl: '/static/cancer-diets.html',
+        templateUrl: '/app/cancer-diets/partials/cancer-diets.html',
         controller: 'cancerDietsController',
         resolve: {
 
@@ -137,7 +137,7 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
     });
 
     $routeProvider.when('/cancer-diets/:id', {
-        templateUrl: '/static/cancer-diet.html',
+        templateUrl: '/app/cancer-diets/partials/cancer-diet.html',
         controller: 'mockController',
         resolve: {
 
