@@ -63,7 +63,7 @@ server.use(server.router);
 
 // Static Routes
 server.get('/', function (req, res) {
-    res.sendfile(path.join(__dirname, '../public/static/index.html'));
+    res.sendfile(path.join(__dirname, '../public/app/app.html'));
 });
 
 /**
