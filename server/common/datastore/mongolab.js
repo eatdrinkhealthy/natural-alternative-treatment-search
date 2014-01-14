@@ -12,6 +12,7 @@ var Treatments = require('../../treatments/treatments-model.js');
 var Resources = require('../../resources/resources-model.js');
 var Practitioners = require('../../practitioners/practitioners-model.js');
 var Clinics = require('../../clinics/clinics-model.js');
+var CancerDiets = require('../../cancer-diets/cancer-diets-model.js');
 
 function Models() {
     var self = this;
@@ -19,6 +20,7 @@ function Models() {
     this.Resources = Resources;
     this.Practitioners = Practitioners;
     this.Clinics = Clinics;
+    this.CancerDiets = CancerDiets;
 
     var options = {
         user: 'web-app',
