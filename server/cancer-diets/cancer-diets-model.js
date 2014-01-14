@@ -23,4 +23,4 @@ var CancerDietsSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('CancerDiets', CancerDietsSchema);
+module.exports = mongoose.model('Cancer-Diets', CancerDietsSchema);
