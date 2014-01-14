@@ -1,7 +1,19 @@
-/**
- * Created with JetBrains WebStorm.
- * User: ldeavila
- * Date: 1/7/14
- * Time: 6:07 PM
- * To change this template use File | Settings | File Templates.
- */
+'use strict';
+
+/** Schema for documents **/
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var TreatmentsSchema = new Schema({
+    name: {type: String, default: null},
+    cancer_type: [
+        {type: String, default: null}
+    ],
+    stage: [
+        {type: String, default: null}
+    ],
+    overview: {type: String, default: null},
+    description: {type: String, default: null}
+});
+
+module.exports = mongoose.model('Treatments', TreatmentsSchema);
