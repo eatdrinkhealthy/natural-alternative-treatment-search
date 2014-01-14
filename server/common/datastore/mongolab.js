@@ -9,14 +9,16 @@ var mongo = require('mongodb')
 
 // Load models
 var Treatments = require('../../treatments/treatments-model.js');
+var Resources = require('../../resources/resources-model.js');
 
 function Models() {
     var self = this;
     this.Treatments = Treatments;
+    this.Resources = Resources;
 
     var options = {
-        user:'web-app',
-        pass:'36hjd;pq24y-kgasw-035uad',
+        user: 'web-app',
+        pass: '36hjd;pq24y-kgasw-035uad',
         server: {keepAlive: 1}
     }
     mongoose.connect('mongodb://@ds053178.mongolab.com:53178/steve-marsh', options);
