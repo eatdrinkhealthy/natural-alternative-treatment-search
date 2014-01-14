@@ -28,15 +28,22 @@
 
 <!-- Jumbotron -->
 <div class="jumbotron">
+
     <h1>Cancer Complementary and Alternative Treatment Directory</h1>
 
     <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus
         commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
 
-    <p>I want to learn more about <input type="text" size="4" placeholder="Stage"> <input type="text"
-                                                                                          placeholder="Cancer Type">
-        <button class="btn btn-sm btn-success"><span class="glyphicon glyphicon-search"></span></button>
-    </p>
+    <form class="form-inline" role="form">
+        I want to learn more about
+        <div class="form-group">
+            <input class="form-control" type="text" size="4" placeholder="Stage">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Cancer Type">
+        </div>
+        <button class="btn btn btn-success"><span class="glyphicon glyphicon-search"></span> Search</button>
+    </form>
 </div>
 
 <!-- Example row of columns -->
