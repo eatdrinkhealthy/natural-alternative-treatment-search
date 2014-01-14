@@ -25,35 +25,33 @@
 </div>
 
 <!-- Begin page content -->
-<h1>Burzynski Clinic</h1>
+<h1>{{clinic.name}}</h1>
 <hr/>
 <div class="row">
     <p class="col-sm-4">
-        <span class="glyphicon glyphicon-home"></span> 9432 Katy Freeway, Houston, TX 77055
+        <span class="glyphicon glyphicon-home"></span> {{clinic.address.street}}, {{clinic.address.city}}, {{clinic.address.state}} {{clinic.address.zip}}
     </p>
 
     <p class="col-sm-4">
     </p>
 
     <p class="col-sm-4">
-        <span class="glyphicon glyphicon-globe"></span> <a href="http://www.burzynskiclinic.com/">The Burzynski Clinic</a>
+        <span class="glyphicon glyphicon-globe"></span> <a href="{{clinic.link.url}}">{{clinic.link.description}}</a>
     </p>
 </div>
 
 <div class="row">
-    <p class="col-sm-5">Cancer Type: <span class="badge">All</span>
+    <p class="col-sm-5">Cancer Type: <span ng-repeat="cancer_type in clinic.cancer_type"><span class="badge">{{cancer_type}}</span> </span>
     </p>
 
-    <p class="col-sm-2">Stage: <span class="badge">All</span></p>
+    <p class="col-sm-2">Stage: <span ng-repeat="stage in clinic.stage"><span class="badge">{{stage}}</span> </span></p>
 
-    <p class="col-sm-5">Treatment Type: <span class="badge">Targeted Therapy</span> <span
-            class="badge">Integrative Medicine</span></p>
+    <p class="col-sm-5">Treatment Type: <span ng-repeat="treatment_type in clinic.treatment_type"><span class="badge">{{treatment_type}}</span> </span></p>
 </div>
 <h3>Description</h3>
 <div class="row">
     <p class="col-sm-12">
-        Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut vivamus a, nam lectus at nunc.
-        Quam euismod sem, semper ut potenti pellentesque quisque. In eget sapien sed, sit duis vestibulum ultricies.
+        {{clinic.description}}
     </p>
 </div>
 <!-- End page content -->

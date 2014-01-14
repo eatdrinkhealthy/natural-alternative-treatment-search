@@ -11,6 +11,15 @@ resourcesModule.controller('resourcesController', ['$scope', '$location', 'resou
 
 }]);
 
+resourcesModule.controller('resourceController', ['$scope', '$location', 'resourcesService', function ($scope, $location, resourcesService) {
+    $scope.resource = undefined;
+    var id = $location.path().match(/\/resources\/(.*)/)[1];
+
+    resourcesService.getResource(id).then(function(resource){
+        $scope.resource = resource;
+    });
+}]);
+
 /** Service Factories **/
 resourcesModule.factory('resourcesService', ['$http', function ($http) {
     //TODO: use a config objects for all $http calls and implement some better non 200 status code handling

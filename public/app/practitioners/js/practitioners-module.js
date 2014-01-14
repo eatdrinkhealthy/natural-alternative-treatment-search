@@ -11,6 +11,15 @@ practitionersModule.controller('practitionersController', ['$scope', '$location'
 
 }]);
 
+practitionersModule.controller('practitionerController', ['$scope', '$location', 'practitionersService', function ($scope, $location, practitionersService) {
+    $scope.practitioner = undefined;
+    var id = $location.path().match(/\/practitioners\/(.*)/)[1];
+
+    practitionersService.getPractitioner(id).then(function(practitioner){
+        $scope.practitioner = practitioner;
+    });
+}]);
+
 /** Service Factories **/
 practitionersModule.factory('practitionersService', ['$http', function ($http) {
     //TODO: use a config objects for all $http calls and implement some better non 200 status code handling

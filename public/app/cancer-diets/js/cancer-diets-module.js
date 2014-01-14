@@ -11,6 +11,15 @@ cancerDietsModule.controller('cancerDietsController', ['$scope', '$location', 'c
 
 }]);
 
+cancerDietsModule.controller('cancerDietController', ['$scope', '$location', 'cancerDietsService', function ($scope, $location, cancerDietsService) {
+    $scope.cancerDiet = undefined;
+    var id = $location.path().match(/\/cancer-diets\/(.*)/)[1];
+
+    cancerDietsService.getCancerDiet(id).then(function(cancerDiet){
+        $scope.cancerDiet = cancerDiet;
+    });
+}]);
+
 /** Service Factories **/
 cancerDietsModule.factory('cancerDietsService', ['$http', function ($http) {
     //TODO: use a config objects for all $http calls and implement some better non 200 status code handling

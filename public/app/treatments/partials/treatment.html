@@ -25,33 +25,22 @@
 </div>
 
 <!-- Begin page content -->
-<h1>Budwig Protocol</h1>
+<h1>{{treatment.name}}</h1>
 <hr/>
 <div class="row">
-    <p class="col-sm-5">Cancer Type: <span class="badge">All</span>
+    <p class="col-sm-5">Cancer Type: <span ng-repeat="cancer_type in treatment.cancer_type"><span class="badge">{{cancer_type}}</span> </span>
     </p>
 
-    <p class="col-sm-2">Stage: <span class="badge">All</span>
+    <p class="col-sm-2">Stage: <span ng-repeat="stage in treatment.stage"><span class="badge">{{stage}} </span> </span></p>
 
-    <p class="col-sm-5">Treatment Category: <span class="badge">Diet</span></p>
+    <p class="col-sm-5">Treatment Category: <span ng-repeat="treatment_category in treatment.treatment_category"><span class="badge">{{treatment_category}}</span> </span></p>
 
 </div>
 <div class="row">
     <div class="col-sm-12">
         <h3>Description</h3>
 
-        <p>Dr. Johanna Budwig, a German physician and seven-time alternative Nobel Prize nominee, created what is now
-            called the "Budwig Protocol" as a way to cure cancer. It mainly consists of a three-month flax oil-quark
-            program, which is a combination diet of whole flaxseeds, flaxseed oil, and low-fat organic cottage cheese
-            (known in Europe as "quark").
-            The Budwig diet includes a long list of other recommended foods such as herbs, nuts, cocoa, and tea. She
-            also provided a list of foods to stay away from, which include hydrogenated oils, hard-shell seafood, white
-            breads, and soy products.
-            The Budwig program replenishes cells that are devoid of essential fats and oils, thereby allowing them to
-            function once again. In turn, this leads to healing and recovery from a number of degenerative diseases
-            including cancer.
-            Dr. Budwig held that cancer was caused by one of four things: a weak immune system, toxins, an improper
-            diet, or oxygen deprivation (or a combination of any of these things).</p>
+        <p>{{treatment.description}}</p>
     </div>
 </div>
 

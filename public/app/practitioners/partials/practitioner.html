@@ -30,38 +30,36 @@
         <img src="../app/common/images/practitioner-default.png" width="130px" height="160px">
     </div>
     <div class="col-sm-10">
-    <h1>Bill Henderson</h1>
+    <h1>{{practitioner.name}}</h1>
     </div>
 </div>
 <hr/>
 <div class="row">
     <p class="col-sm-4">
-        <span class="glyphicon glyphicon-home"></span> 123 Asbury Lane, Ojai, CA 92301
+        <span class="glyphicon glyphicon-home"></span> {{practitioner.address.street}}, {{practitioner.address.city}}, {{practitioner.address.state}} {{practitioner.zip}}
     </p>
 
     <p class="col-sm-4">
     </p>
 
     <p class="col-sm-4">
-        <span class="glyphicon glyphicon-globe"></span> <a href="http://www.beating-cancer-gently.com/">Cancer Free Website</a>
+        <span class="glyphicon glyphicon-globe"></span> <a href="{{practitioner.link.url}}">{{practitioner.link.description}}</a>
     </p>
 </div>
 
 <div class="row">
-    <p class="col-sm-5">Cancer Type: <span class="badge">All</span>
+    <p class="col-sm-5">Cancer Type: <span ng-repeat="cancer_type in practitioner.cancer_type"><span class="badge">{{cancer_type}}</span> </span>
     </p>
 
-    <p class="col-sm-2">Stage: <span class="badge">All</span></p>
+    <p class="col-sm-2">Stage: <span ng-repeat="stage in practitioner.stage"><span class="badge">{{stage}}</span> </span></p>
 
-    <p class="col-sm-5">Treatment Type: <span class="badge">Budwig Protocol</span> <span
-            class="badge">Bill Henderson Protocol</span></p>
+    <p class="col-sm-5">Treatment Type: <span ng-repeat="treatment_type in practitioner.treatment_type"><span class="badge">{{treatment_type}}</span> </span></p>
 
 </div>
 <h3>Description</h3>
 <div class="row">
     <p class="col-sm-12">
-        Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut vivamus a, nam lectus at nunc.
-        Quam euismod sem, semper ut potenti pellentesque quisque. In eget sapien sed, sit duis vestibulum ultricies.
+        {{practitioner.description}}
     </p>
 </div>
 <!-- End page content -->

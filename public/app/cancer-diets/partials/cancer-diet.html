@@ -26,33 +26,28 @@
 
 <!-- Begin page content -->
 
-<h1>Diet Wise</h1>
+<h1>{{cancerDiet.name}}</h1>
 <hr/>
 <div class="row">
-    <p class="col-sm-12">
+    <p class="col-sm-5"><span class="glyphicon glyphicon-user"></span> <span ng-repeat="author in cancerDiet.author">{{author}}<span ng-hide="cancerDiet.author.length == $index+1">,</span> </span></p>
+    <p class="col-sm-3"></p>
+    <p class="col-sm-4">
         <span class="glyphicon glyphicon-globe"></span> <a
-            href="http://www.amazon.com/Diet-Wise-Keith-Scott-Mumby/dp/0983878412">Dr. Keith Scott-Mumby's Books Page</a>
+            href="{{cancerDiet.link.url}}">{{cancerDiet.link.description}}</a>
     </p>
 </div>
-
 <div class="row">
-    <p class="col-sm-10">Cancer Type: <span class="badge">All</span>
+    <p class="col-sm-10">Cancer Type: <span ng-repeat="cancer_type in cancerDiet.cancer_type"><span class="badge">{{cancer_type}}</span> </span>
     </p>
 
-    <p class="col-sm-2">Stage: <span class="badge">All</span></p>
+    <p class="col-sm-2">Stage: <span ng-repeat="stage in cancerDiet.stage"><span class="badge">{{stage}}</span> </span></p>
 
 </div>
 <div class="row">
     <div class="col-sm-12">
         <h3>Description</h3>
 
-        <p>For over 30 years Prof. Keith Scott-Mumby has been a well-known and respected pioneer in alternative
-            medicine,
-            writing and broadcasting all over the world. Now he puts together the benefits of his vast clinical
-            experience
-            to show you how you can uncover the secret TOXIC foods that may be sapping your vitality, reducing your
-            mental powers,
-            causing numerous mysterious symptoms and perhaps even shortening your life.</p>
+        <p>{{cancerDiet.description}}</p>
     </div>
 </div>
 <!-- End page content -->
