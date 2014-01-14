@@ -1,7 +1,35 @@
-/**
- * Created with JetBrains WebStorm.
- * User: ldeavila
- * Date: 1/7/14
- * Time: 6:06 PM
- * To change this template use File | Settings | File Templates.
- */
+'use strict';
+
+/** Schema for documents **/
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var ClinicsSchema = new Schema({
+    name: {type: String, default: null},
+    cancer_type: [
+        {type: String, default: null}
+    ],
+    stage: [
+        {type: String, default: null}
+    ],
+    treatment_type: [
+        {type: String, default: null}
+    ],
+    description: {type: String, default: null},
+    link: {
+        description: {type: String, default: null},
+        url: {type: String, default: null}
+    },
+    address:{
+        street: {type: String, default: null},
+        city: {type: String, default: null},
+        state: {type: String, default: null},
+        zip: {type: String, default: null}
+    },
+    geolocation: {
+        latitude: {type: String, default: null},
+        longitude: {type: String, default: null}
+    }
+});
+
+module.exports = mongoose.model('Clinics', ClinicsSchema);
