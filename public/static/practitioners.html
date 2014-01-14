@@ -31,15 +31,15 @@
     Filter By:
     <div class="form-group">
         <label class="sr-only" for="cancerType">Cancer Type</label>
-        <input type="text" class="form-control" id="cancerType" placeholder="Cancer Type">
+        <input type="text" class="form-control" id="cancerType" placeholder="Cancer Type" ng-model="practitioner.cancer_type">
     </div>
     <div class="form-group">
         <label class="sr-only" for="stage">Stage</label>
-        <input type="text" class="form-control" id="stage" placeholder="Stage">
+        <input type="text" class="form-control" id="stage" placeholder="Stage" ng-model="practitioner.stage">
     </div>
     <div class="form-group">
         <label class="sr-only" for="treatmentType">Treatment Type</label>
-        <input type="text" class="form-control" id="treatmentType" placeholder="Treatment Type">
+        <input type="text" class="form-control" id="treatmentType" placeholder="Treatment Type" ng-model="practitioner.treatment_type">
     </div>
     <div class="pull-right">
         <div class="form-group">
@@ -52,26 +52,25 @@
 <br/>
 
 <div class="list-group">
-    <div class="list-group-item ">
+    <div class="list-group-item" ng-repeat="practitioner in practitioners | filter:practitioner">
         <div class="row">
             <div class="col-sm-1">
                 <img src="../static/images/practitioner-default.png" width="65px" height="80px">
             </div>
-            <h4><a href="/practitioners/mock">Bill Hernderson</a></h4>
+            <h4><a href="/practitioners/{{practitioner._id}}">{{practitioner.name}}</a></h4>
 
             <p>
-                123 Asbury Lane<br/>
-                Ojai, CA 92301
+                {{practitioner.address.street}}<br/>
+                {{practitioner.address.city}}, {{practitioner.address.state}} {{practitioner.address.zip}}
             </p>
         </div>
         <div class="row">
-            <p class="col-sm-5">Cancer Type: <span class="badge">All</span>
+            <p class="col-sm-5">Cancer Type: <span ng-repeat="cancer_type in practitioner.cancer_type"><span class="badge">{{cancer_type}}</span> </span>
             </p>
 
-            <p class="col-sm-2">Stage: <span class="badge">All</span></p>
+            <p class="col-sm-2">Stage: <span ng-repeat="stage in practitioner.stage"><span class="badge">{{stage}}</span> </span>
 
-            <p class="col-sm-5">Treatment Type: <span class="badge">Budwig Protocol</span> <span
-                    class="badge">Bill Henderson Protocol</span></p>
+            <p class="col-sm-5">Treatment Type: <span ng-repeat="treatment_type in practitioner.treatment_type"> <span class="badge">{{treatment_type}}</span> </span></p>
 
         </div>
     </div>
