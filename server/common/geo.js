@@ -1,21 +1,11 @@
 var request = require("request");
 
-        exports.process = function(clinic,index,clinics,next){
-			var doneCheck =function(){
-				//if(index==array.length-1){
-					clinics.push(clinic);
-					//console.log(clinics.length);
-					console.log(clinic);
-					/*
-				}else{
-					return clinic;
-				}
-				console.log("Done Check Fired but has nothing to return?");
-				*/
-				console.log(index+" -- "+clinics.length);
-				var done = index==clinics.length ? true : false; 
-				
-				next(clinic,done);
+var ii=0;
+        exports.process = function(clinic,clinics,next){
+        console.log("ii: "+ii);
+        ii++;
+			var doneCheck =function(updatedClinic){
+				next(updatedClinic);
 			}
 			if(clinic.geolocation.longitude==null || clinic.geolocation.latitude==null){
 				var address = clinic.address; 
@@ -26,9 +16,9 @@ var request = require("request");
 					//console.log(address[param]);
 				}
 		
-				var assign = function(clinic,result,cb){
-					clinic.geolocation.longitude = result.results[0].geometry.location.lng;
-					clinic.geolocation.latitude = result.results[0].geometry.location.lat;
+				var assign = function(clinic,googleJson,cb){
+					clinic.geolocation.longitude = googleJson.results[0].geometry.location.lng;
+					clinic.geolocation.latitude = googleJson.results[0].geometry.location.lat;
 					cb(clinic);
 					
 				}
@@ -39,44 +29,21 @@ var request = require("request");
 
 	}
 
-var geocode = function(clinic,address,callback,cb){
-address=address.split(' ').join('+');
-console.log(address);
- var output = '';
+var g=0;
+var geocode = function(clinic,address,callback,done){
+	address=address.split(' ').join('+');
+	console.log(address);
+	var output = '';
 	var options = {
-                 host: 'http://maps.googleapis.com',
-                 port: 80,
-                 path: '/maps/api/geocode/json?address='+address+'&sensor=true',
-                 method: 'GET'
-                };        
+	         host: 'http://maps.googleapis.com',
+	         port: 80,
+	         path: '/maps/api/geocode/json?address='+address+'&sensor=true',
+	         method: 'GET'
+	};        
 
-request(options.host+options.path, function(error, response, body) {
-  //console.log(body);
-   callback(clinic,JSON.parse(body),cb);
-});
-
-/*
-    var prot = options.port == 443 ? https : http;
-    var req = prot.request(options, function(res)
-    {
-       
-        console.log(options.host + ':' + res.statusCode);
-        //res.setEncoding('utf8');
-
-        res.on('data', function (chunk) {
-            output += chunk;
-        });
-
-        res.on('end', function() {
-            finished();
-        });
-    });
-
-    req.on('error', function(err) {
-        //res.send('error: ' + err.message);
-    });
-
-    req.end();
-  */
+	request(options.host+options.path, function(error, response, body) {
+			g++;console.log("G:"+g);
+		   callback(clinic,JSON.parse(body),done);
+	});
 
 }
