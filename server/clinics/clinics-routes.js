@@ -1,6 +1,6 @@
 var db = require('../common/datastore/mongolab.js');
 var geo = require('../common/geo.js');
-//var geocode = require('../common/geocode.js');
+
 
 /**
  * Allow other processes to execute while iterating over
@@ -39,32 +39,15 @@ exports.getAll = function (req, res) {
 			return res.send({message: 'No clinics found.'}, 400);
 		}
 
-		var getGeoCoded = function (clinics, cb) {
-			var result = [];
-			var i = 0;
+		        var finished = function(rData){
+        	return res.send(rData, 200);
+        }
 
-			var next = function (updatedClinic) {
-				result.push(updatedClinic);
-				i++;
-				if (i == clinics.length) {
-					finished(result);
-				}
-			}
+       var finished = function(rData){
+        	return res.send(rData, 200);
+        }
 
-			clinics.nonBlockingForEach(
-				function (clinic) {
-					geo.process(clinic, result, next);
-				},
-				function () {
-					console.log("DONE");
-				}
-			);
-
-		}
-		var finished = function (rData) {
-			res.send(rData, 200);
-		}
-		getGeoCoded(clinics, finished);
+	geo.getGeoCoded(clinics,finished);
 	});
 };
 
