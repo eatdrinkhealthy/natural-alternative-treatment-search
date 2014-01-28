@@ -1,6 +1,6 @@
 var db = require('../common/datastore/mongolab.js');
 var geo = require('../common/geo.js');
-var geocode = require('../common/geocode.js');
+//var geocode = require('../common/geocode.js');
 
 /**
  * Allow other processes to execute while iterating over
