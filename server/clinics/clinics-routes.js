@@ -28,6 +28,27 @@ Array.prototype.nonBlockingForEach = function (fn, next) {
 	iter();
 };
 
+exports.add = function (req, res) {
+	
+	var clinic = {
+		address: {
+			street: req.body.address.street,
+			city: req.body.address.city,
+			state: req.body.address.state,
+			zip: req.body.address.zip
+		},
+		name: req.body.name,
+		geolocation:{
+			latitude:null,
+			longitude:null
+		}
+	};
+	geo.getGeoCoded([clinic],function(result){
+        	return res.send(result[0], 200);
+        });
+};
+
+
 exports.getAll = function (req, res) {
 	//query the database for all clinics
 	db.Clinics.find(function (err, clinics) {
@@ -39,13 +60,10 @@ exports.getAll = function (req, res) {
 			return res.send({message: 'No clinics found.'}, 400);
 		}
 
-		        var finished = function(rData){
-        	return res.send(rData, 200);
-        }
-
+	
        	//gets an array of clinics and then geocodes them if they are null 
-	geo.getGeoCoded(clinics,function(rData){
-        	return res.send(rData, 200);
+	geo.getGeoCoded(clinics,function(result){
+        	return res.send(result, 200);
         });
         
 	});
@@ -62,6 +80,9 @@ exports.getOneById = function (req, res) {
 		if (!clinic || clinic.length === 0) {
 			return res.send({message: 'No clinic found.'}, 400);
 		}
-		return res.send(clinic, 200);
+	       	//gets an array of clinics and then geocodes them if they are null 
+		geo.getGeoCoded([clinic],function(result){
+			return res.send(result[0], 200);
+		});
 	});
 };

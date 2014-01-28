@@ -73,6 +73,7 @@ server.get('/', function (req, res) {
 server.get('/api/cancer-diets', diets.getAll);
 server.get('/api/cancer-diets/:id', diets.getOneById);
 
+server.post('/api/clinics', clinics.add);
 server.get('/api/clinics', clinics.getAll);
 server.get('/api/clinics/:id', clinics.getOneById);
 
