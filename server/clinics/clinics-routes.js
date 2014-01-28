@@ -1,5 +1,29 @@
 var db = require('../common/datastore/mongolab.js');
+var geo = require('../common/geo.js');
 
+/**
+ * Allow other processes to execute while iterating over 
+ * an array. Useful for large arrays, or long-running processing
+ *
+ * @param {Function} fn    iterator fed each element of the array.
+ * @param {Function} next  executed when done
+ */
+Array.prototype.nonBlockingForEach = function(fn, next) {
+  var arr = this;
+  var i = 0;
+  var len = arr.length;
+  function iter() {
+  	console.log(i);
+    if (i < len) {
+      fn(arr[i]);
+      i++;
+      process.nextTick(iter);
+    } else {
+      next();
+    }
+  }
+  iter();
+};
 
 exports.getAll = function (req, res) {
     //query the database for all clinics
@@ -11,7 +35,45 @@ exports.getAll = function (req, res) {
         if (!clinics || clinics.length === 0) {
             return res.send({message: 'No clinics found.'}, 400);
         }
-        return res.send(clinics, 200);
+        
+        
+        
+        var getGeoCoded=function(clinics,cb){
+        	var result = [];
+        	var i =0;
+        	
+        	var next = function(clinic,done){
+        		result.push(clinic);
+        		
+        		console.log("CLINICS: "+clinics.length+" RESULTS:"+result.length+" DONE? :"+done);
+        		i++;
+        		if(done==true){
+   				cb(result);
+   			}else{
+	        		return clinic;
+        		}
+        		
+        	}
+
+		clinics.nonBlockingForEach(
+			function(clinic){
+				geo.process(clinic,i,result,next);
+			},
+			function(){
+				console.log("DONE");
+			}
+		);
+		   	
+        }
+
+	
+        var finished = function(rData){
+        	return res.send(rData, 200);
+        }
+
+
+	getGeoCoded(clinics,finished);
+        
     });
 };
 
