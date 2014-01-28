@@ -43,11 +43,11 @@ exports.getAll = function (req, res) {
         	return res.send(rData, 200);
         }
 
-       var finished = function(rData){
+       	//gets an array of clinics and then geocodes them if they are null 
+	geo.getGeoCoded(clinics,function(rData){
         	return res.send(rData, 200);
-        }
-
-	geo.getGeoCoded(clinics,finished);
+        });
+        
 	});
 };
 
