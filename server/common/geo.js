@@ -7,7 +7,6 @@ var request = require("request");
         	var next = function(clinic,done){
         		result.push(clinic);
         		
-        		console.log("CLINICS: "+clinics.length+" RESULTS:"+result.length+" DONE? :"+done);
         		i++;
         		if(i == clinics.length){
    				cb(result);
@@ -22,17 +21,15 @@ var request = require("request");
 				process(clinic,i,result,next);
 			},
 			function(){
-				console.log("DONE");
+
 			}
 		);
 		   	
         }
 
 
-var ii=0;
+
         var process = function(clinic,index,clinics,next){
-        console.log("ii: "+ii);
-        ii++;
 			var doneCheck =function(){
 				next(clinic);
 			}
@@ -42,7 +39,6 @@ var ii=0;
 					if(address[param]==(undefined || null)){
 						address[param]='';
 					}
-					//console.log(address[param]);
 				}
 		
 				var assign = function(clinic,result,cb){
@@ -52,7 +48,7 @@ var ii=0;
 					
 				}
 				geocode(clinic,address.street+"+"+address.city+"+"+address.state+"+"+address.zip,assign,doneCheck);
-				//assign("OK",doneCheck);
+
 		
 			}
 
@@ -60,7 +56,7 @@ var ii=0;
 
 var geocode = function(clinic,address,callback,cb){
 address=address.split(' ').join('+');
-console.log(address);
+
  var output = '';
 	var options = {
                  host: 'http://maps.googleapis.com',
@@ -70,8 +66,7 @@ console.log(address);
                 };        
 
 request(options.host+options.path, function(error, response, body) {
-
-   callback(clinic,JSON.parse(body),cb);
+	callback(clinic,JSON.parse(body),cb);
 });
 
 
