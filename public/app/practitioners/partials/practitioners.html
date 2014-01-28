@@ -1,82 +1,86 @@
 <div id="wrap">
     <div class="container">
         <!-- Fixed navbar -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Home</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/about">About</a></li>
-                <li><a href="/treatments">Treatments</a></li>
-                <li class="active"><a href="/practitioners">Practitioners</a></li>
-                <li><a href="/clinics">Clinics</a></li>
-                <li><a href="/cancer-diets">Cancer Diets</a></li>
-                <li><a href="/resources">Resources</a></li>
-            </ul>
-        </div>
-        <!--/.nav-collapse -->
-    </div>
-</div>
-
-<!-- Begin page content -->
-<h1>Practitioners</h1>
-<hr/>
-<form class="form-inline" role="form">
-    Filter By:
-    <div class="form-group">
-        <label class="sr-only" for="cancerType">Cancer Type</label>
-        <input type="text" class="form-control" id="cancerType" placeholder="Cancer Type" ng-model="practitioner.cancer_type">
-    </div>
-    <div class="form-group">
-        <label class="sr-only" for="stage">Stage</label>
-        <input type="text" class="form-control" id="stage" placeholder="Stage" ng-model="practitioner.stage">
-    </div>
-    <div class="form-group">
-        <label class="sr-only" for="treatmentType">Treatment Type</label>
-        <input type="text" class="form-control" id="treatmentType" placeholder="Treatment Type" ng-model="practitioner.treatment_type">
-    </div>
-    <div class="pull-right">
-        <div class="form-group">
-        <input type="text" class="form-control" placeholder="No. of miles from me">
-    </div>
-    <button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Locate</button>
-    </div>
-</form>
-
-<br/>
-
-<div class="list-group">
-    <div class="list-group-item" ng-repeat="practitioner in practitioners | filter:practitioner">
-        <div class="row">
-            <div class="col-sm-1">
-                <img src="../app/common/images/practitioner-default.png" width="65px" height="80px">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Home</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/treatments">Treatments</a></li>
+                        <li class="active"><a href="/practitioners">Practitioners</a></li>
+                        <li><a href="/clinics">Clinics</a></li>
+                        <li><a href="/cancer-diets">Cancer Diets</a></li>
+                        <li><a href="/resources">Resources</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
             </div>
-            <h4><a href="/practitioners/{{practitioner._id}}">{{practitioner.name}}</a></h4>
-
-            <p>
-                {{practitioner.address.street}}<br/>
-                {{practitioner.address.city}}, {{practitioner.address.state}} {{practitioner.address.zip}}
-            </p>
         </div>
-        <div class="row">
-            <p class="col-sm-5">Cancer Type: <span ng-repeat="cancer_type in practitioner.cancer_type"><span class="badge">{{cancer_type}}</span> </span>
-            </p>
 
-            <p class="col-sm-2">Stage: <span ng-repeat="stage in practitioner.stage"><span class="badge">{{stage}}</span> </span>
+        <!-- Begin page content -->
+        <h1>Practitioners</h1>
+        <hr/>
+        <form class="form-inline" role="form">
+            Filter By:
+            <div class="form-group">
+                <label class="sr-only" for="cancerType">Cancer Type</label>
+                <input type="text" class="form-control" id="cancerType" placeholder="Cancer Type"
+                       ng-model="practitioner.cancer_type">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="stage">Stage</label>
+                <input type="text" class="form-control" id="stage" placeholder="Stage" ng-model="practitioner.stage">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="treatmentType">Treatment Type</label>
+                <input type="text" class="form-control" id="treatmentType" placeholder="Treatment Type"
+                       ng-model="practitioner.treatment_type">
+            </div>
+            <div class="pull-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="No. of miles from me">
+                </div>
+                <button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Locate</button>
+            </div>
+        </form>
 
-            <p class="col-sm-5">Treatment Type: <span ng-repeat="treatment_type in practitioner.treatment_type"> <span class="badge">{{treatment_type}}</span> </span></p>
+        <br/>
 
+        <div class="list-group">
+            <div class="list-group-item" ng-repeat="practitioner in practitioners | filter:practitioner">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <img src="../app/common/images/practitioner-default.png" width="65px" height="80px">
+                    </div>
+                    <h4><a href="/practitioners/{{practitioner._id}}">{{practitioner.name}}</a></h4>
+
+                    <p>
+                        {{practitioner.address.street}}<br/>
+                        {{practitioner.address.city}}, {{practitioner.address.state}} {{practitioner.address.zip}}
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="col-sm-5">Cancer Type: <span ng-repeat="cancer_type in practitioner.cancer_type"><span
+                            class="badge">{{cancer_type}}</span> </span>
+                    </p>
+
+                    <p class="col-sm-2">Stage: <span ng-repeat="stage in practitioner.stage"><span class="badge">{{stage}}</span> </span>
+
+                    <p class="col-sm-5">Treatment Type: <span ng-repeat="treatment_type in practitioner.treatment_type"> <span
+                            class="badge">{{treatment_type}}</span> </span></p>
+
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<!-- End page content -->
+        <!-- End page content -->
     </div>
 </div>

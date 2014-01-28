@@ -1,61 +1,65 @@
 <div id="wrap">
     <div class="container">
         <!-- Fixed navbar -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Home</a>
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Home</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/treatments">Treatments</a></li>
+                        <li><a href="/practitioners">Practitioners</a></li>
+                        <li class="active"><a href="/clinics">Clinics</a></li>
+                        <li><a href="/cancer-diets">Cancer Diets</a></li>
+                        <li><a href="/resources">Resources</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
         </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/about">About</a></li>
-                <li><a href="/treatments">Treatments</a></li>
-                <li><a href="/practitioners">Practitioners</a></li>
-                <li class="active"><a href="/clinics">Clinics</a></li>
-                <li><a href="/cancer-diets">Cancer Diets</a></li>
-                <li><a href="/resources">Resources</a></li>
-            </ul>
+
+        <!-- Begin page content -->
+        <h1>{{clinic.name}}</h1>
+        <hr/>
+        <div class="row">
+            <p class="col-sm-4">
+                <span class="glyphicon glyphicon-home"></span> {{clinic.address.street}}, {{clinic.address.city}},
+                {{clinic.address.state}} {{clinic.address.zip}}
+            </p>
+
+            <p class="col-sm-4">
+            </p>
+
+            <p class="col-sm-4">
+                <span class="glyphicon glyphicon-globe"></span> <a href="{{clinic.link.url}}">{{clinic.link.description}}</a>
+            </p>
         </div>
-        <!--/.nav-collapse -->
-    </div>
-</div>
 
-<!-- Begin page content -->
-<h1>{{clinic.name}}</h1>
-<hr/>
-<div class="row">
-    <p class="col-sm-4">
-        <span class="glyphicon glyphicon-home"></span> {{clinic.address.street}}, {{clinic.address.city}}, {{clinic.address.state}} {{clinic.address.zip}}
-    </p>
+        <div class="row">
+            <p class="col-sm-5">Cancer Type: <span ng-repeat="cancer_type in clinic.cancer_type"><span class="badge">{{cancer_type}}</span> </span>
+            </p>
 
-    <p class="col-sm-4">
-    </p>
+            <p class="col-sm-2">Stage: <span ng-repeat="stage in clinic.stage"><span
+                    class="badge">{{stage}}</span> </span></p>
 
-    <p class="col-sm-4">
-        <span class="glyphicon glyphicon-globe"></span> <a href="{{clinic.link.url}}">{{clinic.link.description}}</a>
-    </p>
-</div>
+            <p class="col-sm-5">Treatment Type: <span ng-repeat="treatment_type in clinic.treatment_type"><span
+                    class="badge">{{treatment_type}}</span> </span></p>
+        </div>
+        <h3>Description</h3>
 
-<div class="row">
-    <p class="col-sm-5">Cancer Type: <span ng-repeat="cancer_type in clinic.cancer_type"><span class="badge">{{cancer_type}}</span> </span>
-    </p>
-
-    <p class="col-sm-2">Stage: <span ng-repeat="stage in clinic.stage"><span class="badge">{{stage}}</span> </span></p>
-
-    <p class="col-sm-5">Treatment Type: <span ng-repeat="treatment_type in clinic.treatment_type"><span class="badge">{{treatment_type}}</span> </span></p>
-</div>
-<h3>Description</h3>
-<div class="row">
-    <p class="col-sm-12">
-        {{clinic.description}}
-    </p>
-</div>
+        <div class="row">
+            <p class="col-sm-12">
+                {{clinic.description}}
+            </p>
+        </div>
         <!-- End page content -->
     </div>
 </div>
