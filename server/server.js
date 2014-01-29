@@ -12,6 +12,8 @@ var practitioners = require('./practitioners/practitioners-routes.js');
 var resources = require('./resources/resources-routes.js');
 var treatments = require('./treatments/treatments-routes.js');
 
+var search = require('./search/search.js');
+
 var server = express();
 
 // all environments
@@ -41,6 +43,7 @@ server.use(modRewrite([
 	'^/resources/.*$ / [L]',
 	'^/cancer-diets$ / [L]',
 	'^/cancer-diets/.*$ / [L]',
+	'^/search/.*$ / [L]',
 	//static routes
 	'^/about$ / [L]',
 	'^/contact-us$ / [L]',
@@ -81,6 +84,8 @@ server.get('/api/resources/:id', resources.getOneById);
 
 server.get('/api/treatments', treatments.getAll);
 server.get('/api/treatments/:id', treatments.getOneById);
+
+server.get('/api/search', search.all);
 
 http.createServer(server).listen(server.get('port'), function () {
 	console.log('Express server listening on port ' + server.get('port'));

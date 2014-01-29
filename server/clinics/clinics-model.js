@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ClinicsSchema = new Schema({
+	resource_url: {type: String, default: 'clinics'},
 	name: {type: String, default: null},
 	cancer_type: [
 		{type: String, default: null}

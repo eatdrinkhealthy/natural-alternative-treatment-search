@@ -15,6 +15,15 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
 		}
 	});
 
+
+	$routeProvider.when('/search/:query', {
+		templateUrl: '/app/common/search.html',
+		controller: 'searchResultsController',
+		resolve: {
+
+		}
+	});
+
 	$routeProvider.when('/about', {
 		templateUrl: '/app/common/about.html',
 		controller: 'mockController',
@@ -149,4 +158,49 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
 }]);
 
 app.controller('mockController', ['$scope', '$location', function ($scope, $location) {
+	$scope.stage = '';
+	$scope.cancerType = '';
+
+	$scope.isValid = function () {
+		if ($scope.stage.length > 0 && $scope.cancerType.length > 0) {
+			return false;
+		}
+		return true;
+	}
+
+	$scope.search = function (stage, cancerType) {
+		$location.path('/search/stage=' + stage + '&cancer_type=' + cancerType);
+
+	};
+
+}]);
+
+app.controller('searchResultsController', ['$scope', '$location', 'searchService', function ($scope, $location, searchService) {
+
+	var query = $location.path().match(/\/search\/(.*)/)[1];
+	$scope.stage =  query.split('&')[0].split('=')[1];
+	$scope.cancerType = query.split('&')[1].split('=')[1];
+
+	$scope.results = undefined;
+
+	searchService.searchAll(query).then(function (data) {
+		$scope.results = data;
+	});
+}]);
+
+app.factory('searchService', ['$http', function ($http) {
+	var SearchService = {
+		searchAll: function (query) {
+			var promise = $http.get('http://localhost/api/search?' + query).then(function (response) {
+				if (response.status === 200) {
+					return response.data;
+				} else {
+					window.alert(response.data.message);
+					return response.data
+				}
+			});
+			return promise;
+		}
+	}
+	return SearchService;
 }]);
