@@ -68,3 +68,14 @@ code {
     background-size: cover;
     min-height: 700px;
 }
+
+/* search */
+
+#empty-search {
+    text-align: center;
+    margin-top: 10%;
+}
+
+#search-params {
+    color: red;
+}

@@ -169,7 +169,7 @@ app.controller('mockController', ['$scope', '$location', function ($scope, $loca
 	}
 
 	$scope.search = function (stage, cancerType) {
-		$location.path('/search/stage=' + stage + '&cancer_type=' + cancerType);
+		$location.path('/search/stage=' + stage.toLowerCase() + '&cancer_type=' + cancerType.toLowerCase());
 
 	};
 
@@ -178,13 +178,21 @@ app.controller('mockController', ['$scope', '$location', function ($scope, $loca
 app.controller('searchResultsController', ['$scope', '$location', 'searchService', function ($scope, $location, searchService) {
 
 	var query = $location.path().match(/\/search\/(.*)/)[1];
-	$scope.stage =  query.split('&')[0].split('=')[1];
+	$scope.stage = query.split('&')[0].split('=')[1];
 	$scope.cancerType = query.split('&')[1].split('=')[1];
 
 	$scope.results = undefined;
+	$scope.hasResults = false;
+	$scope.hasNoResults = false;
 
 	searchService.searchAll(query).then(function (data) {
-		$scope.results = data;
+		if (data.length > 0) {
+			$scope.results = data;
+			$scope.hasResults = true;
+		} else {
+			$scope.hasNoResults = true;
+		}
+
 	});
 }]);
 

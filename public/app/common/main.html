@@ -38,7 +38,7 @@
         <form class="form-inline" role="form">
             I want to learn more about
             <div class="form-group">
-                <input class="form-control" type="text" size="4" placeholder="Stage" ng-model="stage">
+                <input class="form-control" type="search" size="4" placeholder="Stage" ng-model="stage">
                 <!--
                 <select class="form-control" ng-model="stage">
                     <option>1</option>
@@ -46,12 +46,12 @@
                     <option>3</option>
                     <option>4</option>
                     <option>5</option>
-                    <option>All</option>
+                    <option>all</option>
                 </select>
                 -->
             </div>
             <div class="form-group">
-                <input class="form-control" type="text" placeholder="Cancer Type" ng-model="cancerType">
+                <input class="form-control" type="search" placeholder="Cancer Type" ng-model="cancerType">
             </div>
             <button class="btn btn btn-primary" ng-click="search(stage, cancerType)" ng-disabled="isValid()"><span
                     class="glyphicon glyphicon-search"></span> Search

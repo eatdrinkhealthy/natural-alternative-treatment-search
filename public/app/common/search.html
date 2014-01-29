@@ -28,12 +28,12 @@
 
         <!-- Begin page content -->
         <h1>Search Results</h1>
-        <h4>Stage: {{stage}} | Cancer Type: {{cancerType}}</h4>
         <hr/>
 
         <br/>
 
-        <div class="list-group">
+        <!-- show when there are results -->
+        <div class="list-group" ng-show="hasResults">
             <div class="list-group-item" ng-repeat="result in results">
                 <div class="row">
                     <h4 class="col-sm-6"><a href="/{{result.resource_url}}/{{result._id}}">{{result.name}}</a></h4>
@@ -47,6 +47,12 @@
                             class="badge">{{stage}}</span> </span>
                 </div>
             </div>
+        </div>
+
+
+        <!-- show when there are no results -->
+        <div ng-show="hasNoResults">
+            <h2 id="empty-search">Unable to find any resources matching stage <em id="search-params">{{stage}}</em> and cancer type <em id="search-params">{{cancerType}}</em>.</h2>
         </div>
         <!-- End page content -->
     </div>
