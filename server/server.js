@@ -76,7 +76,7 @@ server.get('/api/cancer-diets/:id', diets.getOneById);
 server.post('/api/clinics', clinics.add);
 server.get('/api/clinics', clinics.getAll);
 server.get('/api/clinics/:id', clinics.getOneById);
-server.get('/api/clinics/local/:lat/:lng', clinics.getAllByProximity);
+server.get('/api/clinics/local/:lat/:lng/:md', clinics.getAllByProximity);
 
 server.get('/api/practitioners', practitioners.getAll);
 server.get('/api/practitioners/:id', practitioners.getOneById);

@@ -89,8 +89,9 @@ exports.getOneById = function (req, res) {
 exports.getAllByProximity = function (req, res) {
 	var lat = req.params.lat;
 	var lng = req.params.lng;
+	var md = req.params.md;
 	//query the database for all clinics near lat/lng
-	db.Clinics.findNearby(lat,lng,function (err, clinics) {
+	db.Clinics.findNearby(lat,lng,md,function (err, clinics) {
 		if (err) {
 			console.log('ERROR:' + err);
 			return res.send({message: 'A server-side error occurred. Please try again later.'}, 500);

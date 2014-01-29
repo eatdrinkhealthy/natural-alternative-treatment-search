@@ -30,8 +30,8 @@ var ClinicsSchema = new Schema({
 	geo: {type: [Number], index: '2d'}
 });
 
-ClinicsSchema.statics.findNearby= function(lat,lon,cb){
-        this.find({geo:{$near:[Number(lat),Number(lon)],$maxDistance: 0.1}}).populate('Clinics').exec(function(err,col){
+ClinicsSchema.statics.findNearby= function(lat,lon,md,cb){
+        this.find({geo:{$near:[Number(lat),Number(lon)],$maxDistance: Number(md)}}).populate('Clinics').exec(function(err,col){
                 cb(err,col);
         });
 };
