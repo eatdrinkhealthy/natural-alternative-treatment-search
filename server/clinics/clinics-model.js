@@ -27,10 +27,7 @@ var ClinicsSchema = new Schema({
 		state: {type: String, default: null},
 		zip: {type: String, default: null}
 	},
-	geolocation: {
-		latitude: {type: String, default: null},
-		longitude: {type: String, default: null}
-	}
+	geo: {type: [Number], index: '2d'}
 });
 
 module.exports = mongoose.model('Clinics', ClinicsSchema);

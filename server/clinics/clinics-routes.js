@@ -15,7 +15,6 @@ Array.prototype.nonBlockingForEach = function (fn, next) {
 	var len = arr.length;
 
 	function iter() {
-		console.log(i);
 		if (i < len) {
 			fn(arr[i]);
 			i++;
@@ -29,7 +28,7 @@ Array.prototype.nonBlockingForEach = function (fn, next) {
 };
 
 exports.add = function (req, res) {
-	
+	//test using curl: curl -X POST -H "Content-Type: application/json" -d '{"address": {"street": "200 S. W. First Street","city": "Rochester","state": "MN","zip": "55905"},"name": "Mayo Clinic"}' http://localhost/api/clinics
 	var clinic = {
 		address: {
 			street: req.body.address.street,
@@ -38,13 +37,12 @@ exports.add = function (req, res) {
 			zip: req.body.address.zip
 		},
 		name: req.body.name,
-		geolocation:{
-			latitude:null,
-			longitude:null
-		}
+		geo:[req.body.geo==undefined ? null : req.body.geo[0] ,req.body.geo==undefined ? null : req.body.geo[1] ]
 	};
 	geo.getGeoCoded([clinic],function(result){
-        	return res.send(result[0], 200);
+		db.Clinics.create(result[0],function(err,result){
+	        	return res.send(result, 200);		
+		});
         });
 };
 
@@ -62,10 +60,12 @@ exports.getAll = function (req, res) {
 
 	
        	//gets an array of clinics and then geocodes them if they are null 
+       	
 	geo.getGeoCoded(clinics,function(result){
         	return res.send(result, 200);
         });
-        
+
+//        	return res.send(clinics, 200);        
 	});
 };
 
