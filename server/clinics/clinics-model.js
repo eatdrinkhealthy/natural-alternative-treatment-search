@@ -27,12 +27,15 @@ var ClinicsSchema = new Schema({
 		state: {type: String, default: null},
 		zip: {type: String, default: null}
 	},
-	geo: {type: [Number], index: '2d'}
+	geo: {type: [Number], index: '2dsphere'}
 });
 
-ClinicsSchema.statics.findNearby= function(lat,lon,md,cb){
-        this.find({geo:{$near:[Number(lat),Number(lon)],$maxDistance: Number(md)}}).populate('Clinics').exec(function(err,col){
-                cb(err,col);
+ClinicsSchema.statics.findNearby= function(lat,lon,radius,cb){
+	var miles = radius / 3963.192;
+        this.find({
+        	geo: {"$within": {"$centerSphere": [[lon, lat], miles]} }
+        }).populate('Clinics').exec(function (err, col) {
+        	cb(err, col);
         });
 };
 

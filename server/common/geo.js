@@ -47,8 +47,8 @@ var process = function (clinic, clinics, next) {
 		*	It assignes the result of the geocode to the element, then calls the done callback
 		*/
 		var assign = function (clinic, result, cb) {
-			clinic.geo[0] = result.results[0].geometry.location.lat;
-			clinic.geo[1] = result.results[0].geometry.location.lng;
+			clinic.geo[0] = result.results[0].geometry.location.lng;
+			clinic.geo[1] = result.results[0].geometry.location.lat;
 			cb(clinic);
 		}
 		geocode(clinic, address.street + "+" + address.city + "+" + address.state + "+" + address.zip, assign, doneCheck);
