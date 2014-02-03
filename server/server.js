@@ -50,7 +50,10 @@ server.use(modRewrite([
 	'^/disclaimer$ / [L]',
 	'^/privacy-policy / [L]',
 	'^/site-map$ / [L]',
-	'^/terms-of-use$ / [L]'
+	'^/terms-of-use$ / [L]',
+	 // admin routes
+	'^/add/clinic$ / [L]',
+	'^/add/practitioner$ / [L]'
 ]));
 
 /* This is the IE cache issue solution */

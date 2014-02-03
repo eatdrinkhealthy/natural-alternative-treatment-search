@@ -153,6 +153,17 @@ var app = angular.module('app', ['treatmentsModule', 'resourcesModule', 'practit
 		}
 	});
 
+	// Admin routes
+	$routeProvider.when('/add/clinic', {
+		templateUrl: '/app/add-clinic.html',
+		controller: 'addClinicController'
+	});
+
+	$routeProvider.when('/add/practitioner', {
+		templateUrl: '/app/add-practitioner.html',
+		controller: 'addPractitionerController'
+	});
+
 	$routeProvider.otherwise('/');
 
 }]);
@@ -194,6 +205,75 @@ app.controller('searchResultsController', ['$scope', '$location', 'searchService
 		}
 
 	});
+}]);
+
+app.controller('addClinicController', ['$scope', '$location', 'clinicsService', function ($scope, $location, clinicsService) {
+	$scope.clinic = {
+		treatment_type: [],
+		stage: [],
+		cancer_type: []
+	};
+
+	$scope.stage = undefined;
+	$scope.cancerType = undefined;
+	$scope.treatmentType = undefined;
+
+	$scope.addStage = function () {
+		$scope.clinic.stage.push($scope.stage);
+		$scope.stage = undefined;
+	}
+
+	$scope.addTreatmentType = function () {
+		$scope.clinic.treatment_type.push($scope.treatmentType);
+		$scope.treatmentType = undefined;
+	}
+
+	$scope.addCancerType = function () {
+		$scope.clinic.cancer_type.push($scope.cancerType);
+		$scope.cancerType = undefined;
+	}
+
+	$scope.save = function () {
+		clinicsService.addClinic($scope.clinic).then(function (data) {
+			$location.path('/clinics');
+		});
+	}
+
+}]);
+
+
+app.controller('addPractitionerController', ['$scope', '$location', 'practitionersService', function ($scope, $location, practitionersService) {
+	$scope.practitioner = {
+		treatment_type: [],
+		stage: [],
+		cancer_type: []
+	};
+
+	$scope.stage = undefined;
+	$scope.cancerType = undefined;
+	$scope.treatmentType = undefined;
+
+	$scope.addStage = function () {
+		$scope.practitioner.stage.push($scope.stage);
+		$scope.stage = undefined;
+	}
+
+	$scope.addTreatmentType = function () {
+		$scope.practitioner.treatment_type.push($scope.treatmentType);
+		$scope.treatmentType = undefined;
+	}
+
+	$scope.addCancerType = function () {
+		$scope.practitioner.cancer_type.push($scope.cancerType);
+		$scope.cancerType = undefined;
+	}
+
+	$scope.save = function () {
+		practitionersService.addPractitioner($scope.practitioner).then(function (data) {
+			$location.path('/practitioners');
+		});
+	}
+
 }]);
 
 app.factory('searchService', ['$http', function ($http) {

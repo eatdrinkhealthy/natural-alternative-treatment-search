@@ -37,13 +37,18 @@ exports.add = function (req, res) {
 			zip: req.body.address.zip
 		},
 		name: req.body.name,
-		geo:[req.body.geo==undefined ? null : req.body.geo[0] ,req.body.geo==undefined ? null : req.body.geo[1] ]
+		description: req.body.description,
+		stage: req.body.stage,
+		cancer_type: req.body.cancer_type,
+		treatment_type: req.body.treatment_type,
+		link: req.body.link,
+		geo: [req.body.geo == undefined ? null : req.body.geo[0] , req.body.geo == undefined ? null : req.body.geo[1] ]
 	};
-	geo.getGeoCoded([clinic],function(result){
-		db.Clinics.create(result[0],function(err,result){
-	        	return res.send(result, 200);		
+	geo.getGeoCoded([clinic], function (result) {
+		db.Clinics.create(result[0], function (err, result) {
+			return res.send(result, 200);
 		});
-        });
+	});
 };
 
 
@@ -58,11 +63,11 @@ exports.getAll = function (req, res) {
 			return res.send({message: 'No clinics found.'}, 400);
 		}
 
-	
-       	//gets an array of clinics and then geocodes them if they are null 
-	geo.getGeoCoded(clinics,function(result){
-        	return res.send(result, 200);
-        });
+
+		//gets an array of clinics and then geocodes them if they are null
+		geo.getGeoCoded(clinics, function (result) {
+			return res.send(result, 200);
+		});
 
 
 	});
@@ -79,8 +84,8 @@ exports.getOneById = function (req, res) {
 		if (!clinic || clinic.length === 0) {
 			return res.send({message: 'No clinic found.'}, 400);
 		}
-	       	//gets an array of clinics and then geocodes them if they are null 
-		geo.getGeoCoded([clinic],function(result){
+		//gets an array of clinics and then geocodes them if they are null
+		geo.getGeoCoded([clinic], function (result) {
 			return res.send(result[0], 200);
 		});
 	});
@@ -90,10 +95,10 @@ exports.getAllByProximity = function (req, res) {
 	var lat = req.params.lat;
 	var lng = req.params.lng;
 	var miles = req.params.miles;
-	
+
 
 	//query the database for all clinics near lat/lng
-	db.Clinics.findNearby(lat,lng,miles,function (err, clinics) {
+	db.Clinics.findNearby(lat, lng, miles, function (err, clinics) {
 		if (err) {
 			console.log('ERROR:' + err);
 			return res.send({message: 'A server-side error occurred. Please try again later.'}, 500);
@@ -102,9 +107,9 @@ exports.getAllByProximity = function (req, res) {
 			return res.send({message: 'No clinics found.'}, 400);
 		}
 
-	
-	       	//gets an array of clinics and then geocodes them if they are null 
-		geo.getGeoCoded(clinics,function(result){
+
+		//gets an array of clinics and then geocodes them if they are null
+		geo.getGeoCoded(clinics, function (result) {
 			return res.send(result, 200);
 		});
 

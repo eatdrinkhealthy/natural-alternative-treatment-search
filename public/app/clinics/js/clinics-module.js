@@ -61,7 +61,6 @@ clinicsModule.factory('clinicsService', ['$http', function ($http) {
 					window.alert(response.data.message);
 					return response.data
 				}
-				;
 			});
 			return promise;
 		},
@@ -76,6 +75,23 @@ clinicsModule.factory('clinicsService', ['$http', function ($http) {
 			});
 			return promise;
 		},
+		addClinic: function(clinic){
+
+			var config = {
+				method: 'POST',
+				url: 'http://localhost/api/clinics',
+				data: clinic
+			}
+			var promise = $http(config).then(function (response) {
+				if (response.status === 200) {
+					return response.data;
+				} else {
+					window.alert(response.data.message);
+					return response.data
+				}
+			});
+			return promise;
+		}
 	}
 	return ClinicsService;
 }]);

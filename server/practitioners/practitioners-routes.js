@@ -28,6 +28,7 @@ Array.prototype.nonBlockingForEach = function (fn, next) {
 };
 exports.add = function (req, res) {
 	//test using curl: curl -X POST -H "Content-Type: application/json" -d '{"address": {"street": "200 S. W. First Street","city": "Rochester","state": "MN","zip": "55905"},"name": "Mayo Clinic"}' http://localhost/api/clinics
+	console.log(req.body);
 	var practitioner = {
 		address: {
 			street: req.body.address.street,
@@ -36,13 +37,18 @@ exports.add = function (req, res) {
 			zip: req.body.address.zip
 		},
 		name: req.body.name,
-		geo:[req.body.geo==undefined ? null : req.body.geo[0] ,req.body.geo==undefined ? null : req.body.geo[1] ]
+		description: req.body.description,
+		stage: req.body.stage,
+		cancer_type: req.body.cancer_type,
+		treatment_type: req.body.treatment_type,
+		link: req.body.link,
+		geo: [req.body.geo == undefined ? null : req.body.geo[0] , req.body.geo == undefined ? null : req.body.geo[1] ]
 	};
-	geo.getGeoCoded([practitioner],function(result){
-		db.Practitioners.create(result[0],function(err,result){
-	        	return res.send(result, 200);		
+	geo.getGeoCoded([practitioner], function (result) {
+		db.Practitioners.create(result[0], function (err, result) {
+			return res.send(result, 200);
 		});
-        });
+	});
 };
 
 exports.getAll = function (req, res) {
@@ -78,10 +84,10 @@ exports.getAllByProximity = function (req, res) {
 	var lat = req.params.lat;
 	var lng = req.params.lng;
 	var miles = req.params.miles;
-	
+
 
 	//query the database for all clinics near lat/lng
-	db.Practitioners.findNearby(lat,lng,miles,function (err, practitioners) {
+	db.Practitioners.findNearby(lat, lng, miles, function (err, practitioners) {
 		if (err) {
 			console.log('ERROR:' + err);
 			return res.send({message: 'A server-side error occurred. Please try again later.'}, 500);
@@ -90,9 +96,9 @@ exports.getAllByProximity = function (req, res) {
 			return res.send({message: 'No practitioners found.'}, 400);
 		}
 
-	
-	       	//gets an array of practitioners and then geocodes them if they are null 
-		geo.getGeoCoded(practitioners,function(result){
+
+		//gets an array of practitioners and then geocodes them if they are null
+		geo.getGeoCoded(practitioners, function (result) {
 			return res.send(result, 200);
 		});
 

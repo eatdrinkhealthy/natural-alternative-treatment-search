@@ -1,0 +1,73 @@
+<div id="wrap">
+    <div class="container">
+        <!-- Begin page content -->
+        <h1>Add Clinic</h1>
+        <hr/>
+        <form role="form">
+            <h3>Basic Info</h3>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" placeholder="Name" ng-model="clinic.name">
+            </div>
+            <div class="form-group">
+                <label for="description"></label>
+                <textarea class="form-control" id="description" placeholder="Description"
+                          ng-model="clinic.description"></textarea>
+            </div>
+            <h3>Address</h3>
+
+            <div class="form-group">
+                <label for="street"></label>
+                <input type="text" class="form-control" id="street" placeholder="Street"
+                       ng-model="clinic.address.street">
+            </div>
+            <div class="form-group">
+                <label for="city"></label>
+                <input type="text" class="form-control" id="city" placeholder="City" ng-model="clinic.address.city">
+            </div>
+            <div class="form-group">
+                <label for="state"></label>
+                <input type="text" class="form-control" id="state" placeholder="State" ng-model="clinic.address.state">
+            </div>
+            <div class="form-group">
+                <label for="zip"></label>
+                <input type="text" class="form-control" id="zip" placeholder="Zip" ng-model="clinic.address.zip">
+            </div>
+            <h3>Tags</h3>
+
+            <div class="form-group">
+                <label for="cancerType"></label>
+                <input type="text" class="form-control" id="cancerType" placeholder="Cancer Type" ng-model="cancerType">
+                <button type="submit" class="btn btn-default" ng-click="addCancerType()">Add</button>
+                <span ng-repeat="cancerType in clinic.cancer_type">{{cancerType}} </span>
+            </div>
+            <div class="form-group">
+                <label for="stage"></label>
+                <input type="text" class="form-control" id="stage" placeholder="Stage" ng-model="stage">
+                <button type="submit" class="btn btn-default" ng-click="addStage()">Add</button>
+                <span ng-repeat="stage in clinic.stage">{{stage}} </span>
+            </div>
+            <div class="form-group">
+                <label for="treatmentType"></label>
+                <input type="text" class="form-control" id="treatmentType" placeholder="Treatment Type"
+                       ng-model="treatmentType">
+                <button type="submit" class="btn btn-default" ng-click="addTreatmentType()">Add</button>
+                <span ng-repeat="treatmentType in clinic.treatment_type">{{treatmentType}} </span>
+            </div>
+            <h3>Link</h3>
+
+            <div class="form-group">
+                <label for="url"></label>
+                <input type="text" class="form-control" id="url" placeholder="URL" ng-model="clinic.link.url">
+            </div>
+            <div class="form-group">
+                <label for="urlDescription"></label>
+                <input type="text" class="form-control" id="urlDescription" placeholder="Description"
+                       ng-model="clinic.link.description">
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="save()">Save</button>
+
+        </form>
+        <br/><br/>
+    </div>
+</div>
