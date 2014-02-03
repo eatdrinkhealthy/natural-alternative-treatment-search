@@ -47,14 +47,13 @@
             </div>
             <div class="pull-right">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="No. of miles from me">
+                    <input type="text" class="form-control" placeholder="No. of miles from me" ng-model="data.miles">
                 </div>
-                <button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Locate</button>
+                <button class="btn btn-primary" ng-click="locate()"><span class="glyphicon glyphicon-search"></span> Locate</button>
             </div>
         </form>
 
         <br/>
-
         <div class="list-group">
             <div class="list-group-item" ng-repeat="clinic in clinics | filter:clinic">
                 <div class="row">
