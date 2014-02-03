@@ -25,7 +25,7 @@ treatmentsModule.factory('treatmentsService', ['$http', function ($http) {
 	//TODO: use a config objects for all $http calls and implement some better non 200 status code handling
 	var TreatmentsService = {
 		getTreatments: function () {
-			var promise = $http.get('http://localhost/api/treatments').then(function (response) {
+			var promise = $http.get('/api/treatments').then(function (response) {
 				if (response.status === 200) {
 					return response.data;
 				} else {
@@ -36,7 +36,7 @@ treatmentsModule.factory('treatmentsService', ['$http', function ($http) {
 			return promise;
 		},
 		getTreatment: function (id) {
-			var promise = $http.get('http://localhost/api/treatments/' + id).then(function (response) {
+			var promise = $http.get('/api/treatments/' + id).then(function (response) {
 				if (response.status === 200) {
 					return response.data;
 				} else {

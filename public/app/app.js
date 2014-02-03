@@ -279,7 +279,7 @@ app.controller('addPractitionerController', ['$scope', '$location', 'practitione
 app.factory('searchService', ['$http', function ($http) {
 	var SearchService = {
 		searchAll: function (query) {
-			var promise = $http.get('http://localhost/api/search?' + query).then(function (response) {
+			var promise = $http.get('/api/search?' + query).then(function (response) {
 				if (response.status === 200) {
 					return response.data;
 				} else {

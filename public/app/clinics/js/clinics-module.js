@@ -43,7 +43,7 @@ clinicsModule.factory('clinicsService', ['$http', function ($http) {
 	//TODO: use a config objects for all $http calls and implement some better non 200 status code handling
 	var ClinicsService = {
 		getClinics: function () {
-			var promise = $http.get('http://localhost/api/clinics').then(function (response) {
+			var promise = $http.get('/api/clinics').then(function (response) {
 				if (response.status === 200) {
 					return response.data;
 				} else {
@@ -54,7 +54,7 @@ clinicsModule.factory('clinicsService', ['$http', function ($http) {
 			return promise;
 		},
 		getClinic: function (id) {
-			var promise = $http.get('http://localhost/api/clinics/' + id).then(function (response) {
+			var promise = $http.get('/api/clinics/' + id).then(function (response) {
 				if (response.status === 200) {
 					return response.data;
 				} else {
@@ -65,7 +65,7 @@ clinicsModule.factory('clinicsService', ['$http', function ($http) {
 			return promise;
 		},
 		getClinicsByProximity: function (lat,lng,miles) {
-			var promise = $http.get('http://localhost/api/clinics/local/'+lng+'/'+lat+'/'+miles).then(function (response) {
+			var promise = $http.get('/api/clinics/local/'+lng+'/'+lat+'/'+miles).then(function (response) {
 				if (response.status === 200) {
 					return response.data;
 				} else {
@@ -79,7 +79,7 @@ clinicsModule.factory('clinicsService', ['$http', function ($http) {
 
 			var config = {
 				method: 'POST',
-				url: 'http://localhost/api/clinics',
+				url: '/api/clinics',
 				data: clinic
 			}
 			var promise = $http(config).then(function (response) {

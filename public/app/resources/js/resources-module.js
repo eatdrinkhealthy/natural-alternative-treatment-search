@@ -25,7 +25,7 @@ resourcesModule.factory('resourcesService', ['$http', function ($http) {
 	//TODO: use a config objects for all $http calls and implement some better non 200 status code handling
 	var ResourcesService = {
 		getResources: function () {
-			var promise = $http.get('http://localhost/api/resources').then(function (response) {
+			var promise = $http.get('/api/resources').then(function (response) {
 				if (response.status === 200) {
 					return response.data;
 				} else {
@@ -36,7 +36,7 @@ resourcesModule.factory('resourcesService', ['$http', function ($http) {
 			return promise;
 		},
 		getResource: function (id) {
-			var promise = $http.get('http://localhost/api/resources/' + id).then(function (response) {
+			var promise = $http.get('/api/resources/' + id).then(function (response) {
 				if (response.status === 200) {
 					return response.data;
 				} else {

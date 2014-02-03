@@ -25,7 +25,7 @@ cancerDietsModule.factory('cancerDietsService', ['$http', function ($http) {
 	//TODO: use a config objects for all $http calls and implement some better non 200 status code handling
 	var CancerDietsService = {
 		getCancerDiets: function () {
-			var promise = $http.get('http://localhost/api/cancer-diets').then(function (response) {
+			var promise = $http.get('/api/cancer-diets').then(function (response) {
 				if (response.status === 200) {
 					return response.data;
 				} else {
@@ -36,7 +36,7 @@ cancerDietsModule.factory('cancerDietsService', ['$http', function ($http) {
 			return promise;
 		},
 		getCancerDiet: function (id) {
-			var promise = $http.get('http://localhost/api/cancer-diets/' + id).then(function (response) {
+			var promise = $http.get('/api/cancer-diets/' + id).then(function (response) {
 				if (response.status === 200) {
 					return response.data;
 				} else {
