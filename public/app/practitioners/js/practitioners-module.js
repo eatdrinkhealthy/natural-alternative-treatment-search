@@ -8,7 +8,24 @@ practitionersModule.controller('practitionersController', ['$scope', '$location'
 	practitionersService.getPractitioners().then(function (practitioners) {
 		$scope.practitioners = practitioners;
 	});
-
+	$scope.data = {};
+	var getLocation = function() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+		} else {
+			alert("Geolocation is not supported by this browser.");
+		}
+	};
+	var showPosition = function(position) {
+		$scope.practitioners = undefined;
+		//$scope.gps = "Latitude: " + position.coords.latitude + " Longitude: "+ position.coords.longitude;
+		practitionersService.getPractitionersByProximity(position.coords.latitude,position.coords.longitude,$scope.data.miles).then(function (clinics) {
+			$scope.practitioners = clinics;
+		});
+	};
+	$scope.locate = function(){
+		getLocation();
+	};
 }]);
 
 practitionersModule.controller('practitionerController', ['$scope', '$location', 'practitionersService', function ($scope, $location, practitionersService) {
@@ -44,6 +61,17 @@ practitionersModule.factory('practitionersService', ['$http', function ($http) {
 					return response.data
 				}
 				;
+			});
+			return promise;
+		},
+		getPractitionersByProximity: function (lat,lng,miles) {
+			var promise = $http.get('http://localhost/api/practitioners/local/'+lng+'/'+lat+'/'+miles).then(function (response) {
+				if (response.status === 200) {
+					return response.data;
+				} else {
+					window.alert(response.data.message);
+					return response.data
+				}
 			});
 			return promise;
 		}

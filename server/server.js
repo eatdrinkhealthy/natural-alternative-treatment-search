@@ -78,8 +78,10 @@ server.get('/api/clinics', clinics.getAll);
 server.get('/api/clinics/:id', clinics.getOneById);
 server.get('/api/clinics/local/:lng/:lat/:miles', clinics.getAllByProximity);
 
+server.post('/api/practitioners', practitioners.add);
 server.get('/api/practitioners', practitioners.getAll);
 server.get('/api/practitioners/:id', practitioners.getOneById);
+server.get('/api/practitioners/local/:lng/:lat/:miles', practitioners.getAllByProximity);
 
 server.get('/api/resources', resources.getAll);
 server.get('/api/resources/:id', resources.getOneById);

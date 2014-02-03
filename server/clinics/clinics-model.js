@@ -32,9 +32,7 @@ var ClinicsSchema = new Schema({
 
 ClinicsSchema.statics.findNearby= function(lat,lon,radius,cb){
 	var miles = radius / 3963.192;
-        this.find({
-        	geo: {"$within": {"$centerSphere": [[lon, lat], miles]} }
-        }).populate('Clinics').exec(function (err, col) {
+        this.find({geo: {"$within": {"$centerSphere": [[lon, lat], miles]} }}).populate('Clinics').exec(function (err, col) {
         	cb(err, col);
         });
 };

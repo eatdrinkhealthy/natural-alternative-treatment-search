@@ -27,10 +27,14 @@ var PractitionersSchema = new Schema({
 		state: {type: String, default: null},
 		zip: {type: String, default: null}
 	},
-	geolocation: {
-		latitude: {type: String, default: null},
-		longitude: {type: String, default: null}
-	}
+	geo: {type: [Number], index: '2dsphere'}
 });
+
+PractitionersSchema.statics.findNearby= function(lat,lon,radius,cb){
+	var miles = radius / 3963.192;
+        this.find({geo: {"$within": {"$centerSphere": [[lon, lat], miles]} }}).populate('Practitioners').exec(function (err, col) {
+        	cb(err, col);
+        });
+};
 
 module.exports = mongoose.model('Practitioners', PractitionersSchema);
